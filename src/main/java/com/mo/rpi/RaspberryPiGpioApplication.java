@@ -1,4 +1,4 @@
-package com.mo.rpi.gpio;
+package com.mo.rpi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
