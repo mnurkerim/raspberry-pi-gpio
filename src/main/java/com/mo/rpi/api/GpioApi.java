@@ -31,7 +31,7 @@ public class GpioApi {
     }
 
     @RequestMapping("/led/on")
-    public ApiResponse setPingHigh() {
+    public ApiResponse setPinHigh() {
         GpioPinDigitalOutput ledPin = gpioService.getLedPin();
         ledPin.high();
 
@@ -39,7 +39,7 @@ public class GpioApi {
     }
 
     @RequestMapping("/led/off")
-    public ApiResponse setPingLow() {
+    public ApiResponse setPinLow() {
         GpioPinDigitalOutput ledPin = gpioService.getLedPin();
         ledPin.low();
 
