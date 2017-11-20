@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import static com.mo.rpi.model.ApiResponse.ApiResponseBuilder.anApiResponse;
+
 @RestController
 @RequestMapping("api")
 public class GpioApi {
@@ -25,7 +27,7 @@ public class GpioApi {
         ledPin.toggle();
         PinState state = ledPin.getState();
 
-        return new ApiResponse("Switch toggled. Current state: " + state);
+        return anApiResponse().withMessage("LED Toggled").withPinState(state).build();
     }
 
     @RequestMapping("/led/on")
@@ -33,7 +35,7 @@ public class GpioApi {
         GpioPinDigitalOutput ledPin = gpioService.getLedPin();
         ledPin.high();
 
-        return new ApiResponse("LED switched on.");
+        return anApiResponse().withMessage("LED switched ON").withPinState(ledPin.getState()).build();
     }
 
     @RequestMapping("/led/off")
@@ -41,7 +43,7 @@ public class GpioApi {
         GpioPinDigitalOutput ledPin = gpioService.getLedPin();
         ledPin.low();
 
-        return new ApiResponse("LED switched off");
+        return anApiResponse().withMessage("LED switched OFF").withPinState(ledPin.getState()).build();
     }
 
 }
