@@ -46,4 +46,10 @@ public class GpioApi {
         return anApiResponse().withMessage("LED switched OFF").withPinState(ledPin.getState()).build();
     }
 
+    @RequestMapping("/led/state")
+    public ApiResponse getState() {
+        GpioPinDigitalOutput ledPin = gpioService.getLedPin();
+
+        return anApiResponse().withMessage("No action performed").withPinState(ledPin.getState()).build();
+    }
 }
